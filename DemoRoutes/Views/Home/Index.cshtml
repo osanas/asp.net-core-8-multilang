@@ -1,0 +1,16 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+
+<div>
+    <h1 class="display-4">@Localizer["Welcome"]</h1>
+    <p>@Localizer["Hello world"]</p>
+    <p>
+        Culture actuelle : @System.Globalization.CultureInfo.CurrentCulture.Name
+    </p>  
+    <p>
+        Culture UI actuelle : @System.Globalization.CultureInfo.CurrentUICulture.Name
+    </p>
+    <a asp-controller="Home" asp-action="Index" asp-route-culture="fr">Accueil</a>
+    <a asp-controller="Home" asp-action="Index" asp-route-culture="en">Home</a>
+</div>

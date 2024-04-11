@@ -1,0 +1,11 @@
+﻿msgid "Welcome"
+msgstr "Bienvenue"
+
+msgid "Hello world"
+msgstr "Bonjour le monde!"
+
+msgid "Privacy Policy"
+msgstr "politique de confidentialité"
+
+msgid "PrivacyPolicyMsg"
+msgstr "Utilisez cette page pour détailler la politique de confidentialité de votre site"

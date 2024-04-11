@@ -1,0 +1,22 @@
+﻿@using System.Globalization
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+
+<div>
+    <h1 class="display-4">@Localizer["Privacy Policy"]</h1>
+    <p>@Localizer["PrivacyPolicyMsg"]</p>
+    <p>
+        Culture : @CultureInfo.CurrentCulture.Name
+    </p>
+    <p>
+        Culture UI : @CultureInfo.CurrentUICulture.Name
+    </p>  
+    <hr/>
+    <p>
+        ViewBag Culture : @ViewBag.CurrentCulture
+    </p>
+    <p>
+        ViewBag Culture UI : @ViewBag.CurrentUICulture
+    </p>
+</div>
