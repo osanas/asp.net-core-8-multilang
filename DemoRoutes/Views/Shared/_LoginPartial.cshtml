@@ -2,7 +2,7 @@
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 @{
-    var cultures = new List<string> { "fr", "en" }; // Ajoutez toutes les cultures supportées ici
+    var cultures = new List<string> { "fr-CA", "en-CA" }; // Ajoutez toutes les cultures supportées ici
     var currentAction = ViewContext.RouteData.Values["action"].ToString();
     var currentController = ViewContext.RouteData.Values["controller"].ToString();
 }

@@ -37,8 +37,8 @@ namespace DemoRoutes.Controllers
 
         //[Route("{culture:culture=fr}/profile")]
         //[Route("{culture:culture=en}/profile")]
-        [HttpGet("profile")]
-        public IActionResult Profile()
+        [HttpGet("contact")]
+        public IActionResult Contact()
         {
             return View();
         }

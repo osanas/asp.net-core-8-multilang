@@ -23,7 +23,7 @@ namespace DemoRoutes
 
             // ------------------------------- Configuration de la localisation. -------------------------------
             builder.Services.AddPortableObjectLocalization(options => options.ResourcesPath = "Resources");
-            var supportedCultures = new[] { "en", "fr" };
+            var supportedCultures = new[] { "en-CA", "fr-CA" };
             var localizationOptions = new RequestLocalizationOptions()
                 .SetDefaultCulture(supportedCultures[0])
                 .AddSupportedCultures(supportedCultures)
@@ -70,7 +70,7 @@ namespace DemoRoutes
             // Configuration des routes avec support de localisation dans l'URL.
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{culture=en}/{controller=Home}/{action=Index}/{id?}");
+                pattern: "{culture=fr-CA}/{controller=Home}/{action=Index}/{id?}");
 
             app.MapRazorPages();
 

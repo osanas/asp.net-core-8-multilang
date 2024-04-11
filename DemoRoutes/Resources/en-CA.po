@@ -1,4 +1,13 @@
-﻿msgid "Welcome"
+﻿msgid "Home"
+msgstr "Home"
+
+msgid "Privacy"
+msgstr "Privacy"
+
+msgid "Contact"
+msgstr "Contact"
+
+msgid "Welcome"
 msgstr "Welcome"
 
 msgid "Hello world"
