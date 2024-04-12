@@ -5,8 +5,8 @@ using System.Globalization;
 
 namespace DemoRoutes.Controllers
 {
-    //[Route("{culture=fr}")] 
-    [Route("{culture=en-CA}")]
+    [Route("")]
+    //[Route("{culture=en-CA}")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -14,7 +14,9 @@ namespace DemoRoutes.Controllers
         {
             _logger = logger;
         }
-        [Route("")]
+        //[Route("{culture=en-CA}/home", Name = "HomeIndexEnglish")]
+        //[Route("{culture=fr-CA}/accueil", Name = "HomeIndexFrench")]
+        [Route("{culture}/home")]
         public IActionResult Index()
         {
             return View();
@@ -22,7 +24,7 @@ namespace DemoRoutes.Controllers
 
         //[Route("{culture=fr}/politique")]
         //[Route("{culture=en}/privacy")]
-        [Route("privacy")]
+        [Route("{culture}/privacy")]
         public IActionResult Privacy()
         {
             var currentCulture = CultureInfo.CurrentCulture.Name;
@@ -37,7 +39,7 @@ namespace DemoRoutes.Controllers
 
         //[Route("{culture:culture=fr}/profile")]
         //[Route("{culture:culture=en}/profile")]
-        [HttpGet("contact")]
+        [HttpGet("{culture}/contact")]
         public IActionResult Contact()
         {
             return View();
