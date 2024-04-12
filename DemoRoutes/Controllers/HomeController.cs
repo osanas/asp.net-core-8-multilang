@@ -5,8 +5,8 @@ using System.Globalization;
 
 namespace DemoRoutes.Controllers
 {
-    //[Route("{culture}")] 
-    [Route("")]
+    //[Route("{culture=fr}")] 
+    [Route("{culture=en-CA}")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

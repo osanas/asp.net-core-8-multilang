@@ -29,14 +29,29 @@ namespace DemoRoutes
                 .AddSupportedCultures(supportedCultures)
                 .AddSupportedUICultures(supportedCultures);
 
-            localizationOptions.RequestCultureProviders.Insert(0, new RouteDataRequestCultureProvider { Options = localizationOptions });
+            //localizationOptions.RequestCultureProviders.Insert(0, new RouteDataRequestCultureProvider { Options = localizationOptions });
 
-            builder.Services.Configure<RequestLocalizationOptions>(options => { 
-                options = localizationOptions; 
+            localizationOptions.RequestCultureProviders.Insert(0, new CustomRequestCultureProvider(async context =>
+            {
+                var path = context.Request.Path;
+                var segments = path.Value.Split(new char[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+                if (segments.Length > 0)
+                {
+                    var cultureSegment = segments[0];
+                    if (supportedCultures.Contains(cultureSegment))
+                        return new ProviderCultureResult(cultureSegment);
+                }
+                return null; // Fallback to default culture if none specified
+            }));
+
+
+            builder.Services.Configure<RequestLocalizationOptions>(options =>
+            {
+                options = localizationOptions;
             });
 
             builder.Services.AddControllersWithViews()
-                .AddViewLocalization() //LanguageViewLocationExpanderFormat.Suffix
+                .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix) //LanguageViewLocationExpanderFormat.Suffix
                 .AddDataAnnotationsLocalization();
 
             var app = builder.Build();
@@ -57,9 +72,9 @@ namespace DemoRoutes
             app.UseStaticFiles();
 
             // ------------------------------- Configuration du middleware de localisation. -------------------------------
-            app.UseRequestLocalization(localizationOptions);
+            //app.UseRequestLocalization(localizationOptions);
 
-            //app.UseRequestLocalizationWithSettings(localizationOptions);
+            app.UseRequestLocalizationWithSettings(localizationOptions);
             //app.UseRequestLocalization();
 
             app.UseRouting();
@@ -70,7 +85,7 @@ namespace DemoRoutes
             // Configuration des routes avec support de localisation dans l'URL.
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{culture=fr-CA}/{controller=Home}/{action=Index}/{id?}");
+                pattern: "{culture}/{controller=Home}/{action=Index}/{id?}");
 
             app.MapRazorPages();
 
