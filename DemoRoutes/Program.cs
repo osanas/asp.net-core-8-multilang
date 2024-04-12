@@ -72,9 +72,9 @@ namespace DemoRoutes
             app.UseStaticFiles();
 
             // ------------------------------- Configuration du middleware de localisation. -------------------------------
-            //app.UseRequestLocalization(localizationOptions);
+            app.UseRequestLocalization(localizationOptions);
 
-            app.UseRequestLocalizationWithSettings(localizationOptions);
+            //app.UseRequestLocalizationWithSettings(localizationOptions);
             //app.UseRequestLocalization();
 
             app.UseRouting();
